@@ -35,6 +35,7 @@ DEPEND="
 	!<dev-db/etcd-0.0.1-r6
 	!coreos-base/oem-service
 	test? ( dev-lang/python:2.7 )
+	=sys-cluster/mesos-1.2.0
 	"
 RDEPEND="${DEPEND}
 	app-admin/logrotate
@@ -42,6 +43,7 @@ RDEPEND="${DEPEND}
 	sys-apps/gptfdisk
 	>=sys-apps/systemd-207-r5
 	>=coreos-base/coreos-cloudinit-0.1.2-r5
+	=sys-cluster/mesos-1.2.0
 	"
 
 src_install() {
