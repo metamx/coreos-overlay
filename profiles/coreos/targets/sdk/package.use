@@ -15,7 +15,6 @@ dev-libs/libaio static-libs
 dev-libs/openssl static-libs
 media-libs/libjpeg-turbo static-libs
 media-libs/libpng static-libs
-net-misc/curl static-libs
 sys-apps/attr static-libs
 sys-apps/dtc static-libs
 sys-libs/libcap-ng static-libs
@@ -24,3 +23,6 @@ sys-libs/ncurses static-libs
 sys-libs/zlib static-libs
 virtual/jpeg static-libs
 x11-libs/pixman static-libs
+
+# Enable c-ares for curl https://stackoverflow.com/q/9191668/6871416
+net-misc/curl static-libs adns
