@@ -20,7 +20,7 @@ media-libs/gd           png
 media-libs/libmtp       -crypt
 # We don't want any driver/hw rendering on the host
 media-sound/alsa-utils	-libsamplerate minimal
-net-misc/curl		kerberos threads
+net-misc/curl		kerberos adns
 net-misc/iputils	arping traceroute
 sci-geosciences/gpsd	-cxx
 sys-devel/gettext	-git
@@ -40,7 +40,7 @@ net-analyzer/nmap ncat -lua
 app-admin/sudo -sendmail
 
 # use lzma which is the default on non-gentoo systems, avoid pulling in gnutls
-sys-apps/systemd build curl gcrypt lzma -ssl
+sys-apps/systemd build curl gcrypt lzma -lz4 -ssl
 net-libs/libmicrohttpd -ssl
 
 # disable kernel config detection and module building
