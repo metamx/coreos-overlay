@@ -82,6 +82,8 @@ RDEPEND="${RDEPEND}
 		app-emulation/xenstore
 		sys-auth/realmd
 		sys-auth/sssd
+		app-admin/flannel-wrapper
+		=sys-cluster/mesos-1.2.0
 	)"
 
 RDEPEND="${RDEPEND}
