@@ -6,11 +6,12 @@ CROS_WORKON_PROJECT="coreos/mantle"
 CROS_WORKON_LOCALNAME="mantle"
 CROS_WORKON_REPO="git://github.com"
 COREOS_GO_PACKAGE="github.com/coreos/mantle"
+COREOS_GO_VERSION="go1.8"
 
 if [[ "${PV}" == 9999 ]]; then
 	KEYWORDS="~amd64 ~arm64"
 else
-	CROS_WORKON_COMMIT="d59dfec8129d5e1ef2a18fe1add98cb5b08a1903" # v0.3.2
+	CROS_WORKON_COMMIT="a1d9e8b70ab069d479a4d8d69ec07b1a80092f10" # v0.5.0
 	KEYWORDS="amd64 arm64"
 fi
 
@@ -33,7 +34,7 @@ src_compile() {
 		GO_LDFLAGS="-X ${COREOS_GO_PACKAGE}/version.Version=${PV}"
 	fi
 
-	for cmd in cork kola ore plume; do
+	for cmd in cork gangue kola ore plume; do
 		go_build "${COREOS_GO_PACKAGE}/cmd/${cmd}"
 	done
 
@@ -48,7 +49,7 @@ src_test() {
 }
 
 src_install() {
-	for cmd in cork kola ore plume; do
+	for cmd in cork gangue kola ore plume; do
 		dobin "${GOBIN}"/"${cmd}"
 	done
 
