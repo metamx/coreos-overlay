@@ -39,7 +39,6 @@ src_configure() {
                 $(use_with network-isolator) \
                 --disable-python \
                 --disable-java \
-                --enable-optimize \
                 --disable-dependency-tracking \
                 --with-apr=${MESOS_LIB_PREFIX} \
                 --with-curl=${MESOS_LIB_PREFIX} \
