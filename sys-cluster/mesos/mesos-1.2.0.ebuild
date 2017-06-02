@@ -15,8 +15,9 @@ KEYWORDS="amd64 x86"
 IUSE="network-isolator perftools install-module-dependencies"
 SLOT="0"
 
+# See https://issues.apache.org/jira/browse/MESOS-7603 for libcurl adns
 RDEPEND=">=dev-libs/apr-1.5.2
-        >=net-misc/curl-7.43.0
+        >=net-misc/curl-7.43.0[adns]
         network-isolator? ( dev-libs/libnl )
         dev-libs/cyrus-sasl
         >=dev-vcs/subversion-1.9.4"
