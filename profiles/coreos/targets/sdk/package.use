@@ -15,7 +15,8 @@ dev-libs/libaio static-libs
 dev-libs/openssl static-libs
 media-libs/libjpeg-turbo static-libs
 media-libs/libpng static-libs
-net-misc/curl static-libs
+# re. adns, see https://stackoverflow.com/q/9191668/6871416
+net-misc/curl static-libs adns
 sys-apps/attr static-libs
 sys-apps/dtc static-libs
 sys-libs/libcap-ng static-libs
