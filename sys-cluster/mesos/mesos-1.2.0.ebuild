@@ -12,7 +12,7 @@ SRC_URI="http://archive.apache.org/dist/${PN}/${PV}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 KEYWORDS="amd64 x86"
-IUSE="network-isolator perftools install-module-dependencies"
+IUSE="network-isolator perftools install-module-dependencies +adns"
 SLOT="0"
 
 # See https://issues.apache.org/jira/browse/MESOS-7603 for libcurl adns
