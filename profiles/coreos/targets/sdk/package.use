@@ -13,3 +13,5 @@ dev-libs/libxml2 python
 # for qemu
 app-arch/bzip2 static-libs
 
+# See https://stackoverflow.com/q/9191668/6871416
+net-misc/curl adns
