@@ -20,12 +20,14 @@ RDEPEND=">=dev-libs/apr-1.5.2
         >=net-misc/curl-7.43.0[adns]
         network-isolator? ( dev-libs/libnl )
         dev-libs/cyrus-sasl
-        >=dev-vcs/subversion-1.9.4"
+        >=dev-vcs/subversion-1.9.4
+"
 DEPEND=$RDEPEND
 
 src_prepare() {
         epatch "${FILESDIR}/mesos-stout-cloexec.patch"
         epatch "${FILESDIR}/mesos-linux-ns-nosetns.patch"
+        epatch "${FILESDIR}/boost-include.patch"
         eautoreconf
 }
 

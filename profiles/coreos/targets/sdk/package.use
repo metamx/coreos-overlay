@@ -15,6 +15,7 @@ dev-libs/libaio static-libs
 dev-libs/openssl static-libs
 media-libs/libjpeg-turbo static-libs
 media-libs/libpng static-libs
+net-misc/curl static-libs adns
 sys-apps/attr static-libs
 sys-apps/dtc static-libs
 sys-libs/libcap-ng static-libs
