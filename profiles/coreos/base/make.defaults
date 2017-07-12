@@ -9,12 +9,6 @@
 USE_EXPAND="${USE_EXPAND} BOARD_USE CROS_WORKON_TREE TESTS U_BOOT_CONFIG_USE U_BOOT_FDT_USE"
 USE_EXPAND_HIDDEN="${USE_EXPAND_HIDDEN} CROS_WORKON_TREE"
 
-# Support selecting between different etcd versions. This must be done
-# via use flags because if two versions are installed one must provide
-# the "default" /usr/bin/etcd binary and systemd services.
-USE_EXPAND="${USE_EXPAND} ETCD_PROTOCOLS"
-ETCD_PROTOCOLS="1 2"
-
 # Use go_version_* flags to indicate which major version was used.
 # For now this is only informational and set by coreos-go.eclass
 USE_EXPAND="${USE_EXPAND} GO_VERSION"
@@ -31,10 +25,6 @@ USE="${USE} -zeroconf"
 
 # No need for OpenMP support in GCC and other apps
 USE="${USE} -openmp"
-
-# Test enabling some flags globally prior to syncing other profile changes.
-# TODO(marineam): remove after portage-stable/profiles is updated.
-USE="${USE} seccomp xattr"
 
 # Set SELinux policy
 POLICY_TYPES="targeted mcs mls"
