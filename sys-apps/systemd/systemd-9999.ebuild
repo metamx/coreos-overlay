@@ -405,6 +405,11 @@ multilib_src_install_all() {
 	insinto /usr/lib/systemd/system-preset
 	doins "${FILESDIR}"/99-default.preset
 
+	# Increase systemd timeout
+	rm "${D}"/etc/systemd/system.conf
+	insinto /etc/systemd/system.conf
+	doins "${FILESDIR}"/system.conf
+
 	# Disable the "First Boot Wizard" by default, it isn't very applicable to CoreOS
 	rm "${D}${unitdir}"/sysinit.target.wants/systemd-firstboot.service
 
