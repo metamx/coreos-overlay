@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	# Use ~arch instead of empty keywords for compatibility with cros-workon
 	KEYWORDS="~amd64 ~arm64 ~arm ~x86"
 else
-	CROS_WORKON_COMMIT="5d6e7d58b4369ae28925fdb606b28b223a2b238b" # v233-coreos
+	CROS_WORKON_COMMIT="d0c35451903b2ea63a840d2c8cf62faa8c47a748" # v233-coreos
 	KEYWORDS="amd64 arm64 ~arm ~x86"
 fi
 
@@ -405,6 +405,12 @@ multilib_src_install_all() {
 	insinto /usr/lib/systemd/system-preset
 	doins "${FILESDIR}"/99-default.preset
 
+	# Increase systemd timeout
+	echo "Installing custom system.conf with timeout!"
+	rm "${D}"/etc/systemd/system.conf
+	insinto /etc/systemd/system.conf
+	doins "${FILESDIR}"/system.conf
+
 	# Disable the "First Boot Wizard" by default, it isn't very applicable to CoreOS
 	rm "${D}${unitdir}"/sysinit.target.wants/systemd-firstboot.service
 
@@ -433,7 +439,6 @@ migrate_locale() {
 			cat > "${locale_conf}" <<-EOF
 				# This file has been created by the sys-apps/systemd ebuild.
 				# See locale.conf(5) and localectl(1).
-
 				# LANG=${LANG}
 			EOF
 			eend ${?} || FAIL=1
@@ -488,6 +493,12 @@ pkg_postinst() {
 	# Bug 465468, make sure locales are respect, and ensure consistency
 	# between OpenRC & systemd
 	migrate_locale
+
+	# Increase systemd timeout
+	echo "One more try to update system.conf"
+	rm "${D}"/etc/systemd/system.conf
+	insinto /etc/systemd/system.conf
+	doins "${FILESDIR}"/system.conf
 
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
