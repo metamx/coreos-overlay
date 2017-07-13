@@ -493,6 +493,12 @@ pkg_postinst() {
 	# between OpenRC & systemd
 	migrate_locale
 
+	# Increase systemd timeout
+	echo "One more try to update system.conf"
+	rm "${D}"/etc/systemd/system.conf
+	insinto /etc/systemd/system.conf
+	doins "${FILESDIR}"/system.conf
+
 	if [[ ${FAIL} ]]; then
 		eerror "One of the postinst commands failed. Please check the postinst output"
 		eerror "for errors. You may need to clean up your system and/or try installing"
