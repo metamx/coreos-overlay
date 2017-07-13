@@ -406,6 +406,7 @@ multilib_src_install_all() {
 	doins "${FILESDIR}"/99-default.preset
 
 	# Increase systemd timeout
+	echo "Installing custom system.conf with timeout!"
 	rm "${D}"/etc/systemd/system.conf
 	insinto /etc/systemd/system.conf
 	doins "${FILESDIR}"/system.conf
